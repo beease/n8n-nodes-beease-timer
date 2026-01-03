@@ -1,14 +1,14 @@
 # n8n-nodes-beease-timer
 
-This is an n8n community node. It lets you use GitHub Issues in your n8n workflows.
+This is an n8n community node. It lets you use Beease Timer in your n8n workflows for time tracking and project management.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/sustainable-use-license/) workflow automation platform.
 
-[Installation](#installation)
-[Operations](#operations)
-[Credentials](#credentials)
-[Compatibility](#compatibility)
-[Usage](#usage)
+[Installation](#installation)  
+[Operations](#operations)  
+[Credentials](#credentials)  
+[Compatibility](#compatibility)  
+[Usage](#usage)  
 [Resources](#resources)
 
 ## Installation
@@ -17,57 +17,88 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 ## Operations
 
-- Issues
-    - Get an issue
-    - Get many issues in a repository
-    - Create a new issue
-- Issue Comments
-    - Get many issue comments
+### Workspace
+- **Create**: Create a new workspace
+- **Delete**: Delete a workspace
+- **Get Many**: Retrieve all workspaces
+- **Update**: Update a workspace
+
+### Project
+- **Create**: Create a new project in a workspace
+- **Delete**: Delete a project
+- **Get Many**: Retrieve all projects from a workspace
+- **Update**: Update a project
+
+### Member Session
+- **Create**: Start a new time tracking session
+- **Delete**: Delete a session
+- **Get Many**: Retrieve sessions with optional filtering
+- **Stop**: Stop an active time tracking session
+- **Update Comment**: Update the comment of a session
 
 ## Credentials
 
-You can use either access token or OAuth2 to use this node.
+You need a Beease Timer API key to use this node.
 
-### Access token
+### Getting your API Key
 
-1. Open your GitHub profile [Settings](https://github.com/settings/profile).
-2. In the left navigation, select [Developer settings](https://github.com/settings/apps).
-3. In the left navigation, under Personal access tokens, select Tokens (classic).
-4. Select Generate new token > Generate new token (classic).
-5. Enter a descriptive name for your token in the Note field, like n8n integration.
-6. Select the Expiration you'd like for the token, or select No expiration.
-7. Select Scopes for your token. For most of the n8n GitHub nodes, add the `repo` scope.
-    - A token without assigned scopes can only access public information.
-8. Select Generate token.
-9. Copy the token.
+1. Log in to your Beease Timer account
+2. Navigate to your account settings
+3. Find the API section
+4. Generate or copy your API key
 
-Refer to [Creating a personal access token (classic)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) for more information. Refer to Scopes for OAuth apps for more information on GitHub scopes.
+### Configuring in n8n
 
-![Generated Access token in GitHub](https://docs.github.com/assets/cb-17251/mw-1440/images/help/settings/personal-access-tokens.webp)
+1. In n8n, go to **Credentials** > **New**
+2. Search for "Beease Timer API"
+3. Enter your API key
+4. Click **Save**
 
-### OAuth2
+**Note**: The API URL is automatically configured to the production server (`http://79.137.37.169:8020/api`).
 
-If you're self-hosting n8n, create a new GitHub [OAuth app](https://docs.github.com/en/apps/oauth-apps):
+For local development testing, you need to manually change the hardcoded URLs in the source code:
+- [nodes/BeeaseTimer/genericFunctions.ts](nodes/BeeaseTimer/genericFunctions.ts) (line ~29)
+- [credentials/BeeaseTimerApi.credentials.ts](credentials/BeeaseTimerApi.credentials.ts) (line ~45)
 
-1. Open your GitHub profile [Settings](https://github.com/settings/profile).
-2. In the left navigation, select [Developer settings](https://github.com/settings/apps).
-3. In the left navigation, select OAuth apps.
-4. Select New OAuth App.
-    - If you haven't created an app before, you may see Register a new application instead. Select it.
-5. Enter an Application name, like n8n integration.
-6. Enter the Homepage URL for your app's website.
-7. If you'd like, add the optional Application description, which GitHub displays to end-users.
-8. From n8n, copy the OAuth Redirect URL and paste it into the GitHub Authorization callback URL.
-9. Select Register application.
-10. Copy the Client ID and Client Secret this generates and add them to your n8n credential.
-
-Refer to the [GitHub Authorizing OAuth apps documentation](https://docs.github.com/en/apps/oauth-apps/using-oauth-apps/authorizing-oauth-apps) for more information on the authorization process.
+Change `http://79.137.37.169:8020/api` to `http://localhost:3001`
 
 ## Compatibility
 
 Compatible with n8n@1.60.0 or later
 
+## Usage
+
+### Example: Start a time tracking session
+
+1. Add the Beease Timer node to your workflow
+2. Select **Member Session** as the resource
+3. Select **Create** as the operation
+4. Configure the project and optional comment
+5. Execute the node to start tracking time
+
+### Example: List all projects in a workspace
+
+1. Add the Beease Timer node to your workflow
+2. Select **Project** as the resource
+3. Select **Get Many** as the operation
+4. Select the workspace
+5. Execute the node to retrieve all projects
+
 ## Resources
 
 * [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
-* [GitHub API docs](https://docs.github.com/en/rest/issues)
+* [Beease website](https://beease.com)
+
+## Development
+
+To run this node locally in development mode:
+
+1. Clone the repository
+2. Copy `.env.example` to `.env` and set `NODE_ENV=development`
+3. Run `npm install`
+4. Run `npm run dev` to start n8n with the node in development mode
+
+## License
+
+[MIT](LICENSE)
+

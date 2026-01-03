@@ -1,11 +1,20 @@
 {
     "name": "n8n-nodes-beease-timer",
     "version": "0.1.0",
-    "description": "Helper nodes beease timer chrome extension",
+    "description": "n8n community node for Beease Timer - Time tracking and project management integration",
     "license": "MIT",
-    "homepage": "",
+    "homepage": "https://github.com/beease/n8n-nodes-beease-timer#readme",
     "keywords": [
-        "n8n-community-node-package"
+        "n8n-community-node-package",
+        "n8n",
+        "beease",
+        "timer",
+        "time-tracking",
+        "time tracking",
+        "project-management",
+        "workspace",
+        "productivity",
+        "session-tracking"
     ],
     "author": {
         "name": "beease",
@@ -15,15 +24,15 @@
         "type": "git",
         "url": "git+https://github.com/beease/n8n-nodes-beease-timer.git"
     },
-   "scripts": {
-		"build": "n8n-node build",
-		"build:watch": "tsc --watch",
-		"dev": "n8n-node dev",
-		"lint": "n8n-node lint",
+    "scripts": {
+        "build": "n8n-node build",
+        "build:watch": "tsc --watch",
+        "dev": "n8n-node dev",
+        "lint": "n8n-node lint",
         "lint:fix": "n8n-node lint --fix",
-		"release": "n8n-node release",
-		"prepublishOnly": "n8n-node prerelease"
-	},
+        "release": "n8n-node release",
+        "prepublishOnly": "n8n-node prerelease"
+    },
     "files": [
         "dist"
     ],
@@ -39,6 +48,7 @@
     },
     "devDependencies": {
         "@n8n/node-cli": "*",
+        "@types/node": "^25.0.3",
         "eslint": "9.32.0",
         "prettier": "3.6.2",
         "release-it": "^19.0.4",

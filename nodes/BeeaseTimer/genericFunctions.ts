@@ -25,8 +25,8 @@ export async function beeaseTrpcCall<T = unknown>(
 	input: unknown,
 	method: 'GET' | 'POST' = 'POST',
 ): Promise<T> {
-	const credentials = await this.getCredentials("beeaseTimerApi");
-	const baseUrl = String(credentials.baseUrl).replace(/\/$/, "");
+	// URL de production - Pour développement local, remplacer par 'http://localhost:3001'
+	const baseUrl = 'http://79.137.37.169:8020/api'.replace(/\/$/, "");
 
 	const options: IHttpRequestOptions = {
 		method,

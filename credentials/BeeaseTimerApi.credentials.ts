@@ -18,14 +18,6 @@ export class BeeaseTimerApi implements ICredentialType {
 
 	properties: INodeProperties[] = [
 		{
-			displayName: "Base URL",
-			name: "baseUrl",
-			type: "string",
-			default: "http://localhost:3001",
-			required: true,
-			placeholder: "http://79.137.37.169:8020/api",
-		},
-		{
 			displayName: "API Key",
 			name: "apiKey",
 			type: "string",
@@ -47,7 +39,8 @@ export class BeeaseTimerApi implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			method: "GET",
-			baseURL: "={{$credentials.baseUrl}}",
+			// URL de production - Pour développement local, remplacer par 'http://localhost:3001'
+			baseURL: 'http://79.137.37.169:8020/api',
 			url: "/api/credential.isLogged",
 			body: { 0: null },
 			json: true,

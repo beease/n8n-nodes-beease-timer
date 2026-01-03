@@ -1,0 +1,18 @@
+{
+    "node": "n8n-nodes-beease-timer.beeaseTimer",
+    "nodeVersion": "1.0",
+    "codexVersion": "1.0",
+    "categories": ["Development", "Productivity"],
+    "resources": {
+        "credentialDocumentation": [
+            {
+                "url": "https://github.com/beease/n8n-nodes-beease-timer?tab=readme-ov-file#credentials"
+            }
+        ],
+        "primaryDocumentation": [
+            {
+                "url": "https://github.com/beease/n8n-nodes-beease-timer?tab=readme-ov-file"
+            }
+        ]
+    }
+}

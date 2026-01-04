@@ -1,6 +1,6 @@
 {
     "name": "n8n-nodes-beease-timer",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "n8n community node for Beease Timer - Time tracking and project management integration",
     "license": "MIT",
     "homepage": "https://github.com/beease/n8n-nodes-beease-timer#readme",
